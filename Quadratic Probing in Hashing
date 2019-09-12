@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+using namespace std;
+void QuadraticProbing(int hash[],int hashSize,int arr[],int sizeOfArray);
+int main() {
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    int hashSize;
+	    cin>>hashSize;
+	    int hash[hashSize];
+	    
+	    
+	    
+	    int  sizeOfArray;
+	    cin>>sizeOfArray;
+	    int arr[sizeOfArray];
+	    
+	    for(int i=0;i<sizeOfArray;i++)
+	    cin>>arr[i];
+	    
+	    
+	    for(int i=0;i<hashSize;i++)
+	    hash[i]=-1;
+	    
+	    QuadraticProbing( hash, hashSize, arr, sizeOfArray);
+	    
+	    for(int i=0;i<hashSize;i++)
+	    cout<<hash[i]<<" ";
+	    
+	    cout<<endl;
+	    
+	    
+	}
+	return 0;
+}
+
+
+void QuadraticProbing(int hash[],int hashSize,int arr[],int s)
+{
+   for(int i=0;i<s;i++)
+   {
+       if(hash[arr[i]%hashSize]==-1)
+       {
+          hash[arr[i]%hashSize]=arr[i]; 
+       }
+       else
+       {
+            int k=1;
+           while(hash[(arr[i]+k*k)%hashSize]!=-1&&k<s)
+           {
+               k++;
+              
+              // cout<<" (arr[i]+k)%hashSize "<<(arr[i]+k*k)%hashSize<<endl;
+               
+               
+               
+           }
+           hash[(arr[i]+k*k)%hashSize]=arr[i];
+       }
+   }
+}
