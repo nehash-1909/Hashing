@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+int test;
+cin>>test;
+for(int t=0;t<test;t++)
+{
+    int no;
+    cin>>no;
+    int a[no];
+    unordered_map<int,int> m;
+    set<int> p;
+    set<int,greater<int>>n;
+     set<int>::iterator itrp,itrn;
+    for(int i=0;i<no;i++)
+    {
+        cin>>a[i];
+        m[a[i]]=a[i];
+    }
+    int f=0;
+    for(int i=0;i<no;i++)
+    {
+        if(a[i]>0&&m.find(m[-a[i]])!=m.end())
+        {
+            f=1;
+            p.insert(a[i]);
+            n.insert(-a[i]);
+            m[a[i]]=INT_MAX;
+            m[-a[i]]=INT_MAX;
+        }
+    }
+    
+    
+    for(itrp=p.begin(),itrn=n.begin();itrp!=p.end(),itrn!=n.end();++itrp,++itrn)
+    {
+    
+        cout<<*itrp<<" ";
+       
+        cout<<*itrn<<" ";
+       
+    }
+    if(f==0)
+    cout<<"0";
+    cout<<endl;
+    
+}
+	return 0;
+}
