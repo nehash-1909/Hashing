@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	int test;
+	cin>>test;
+	for(int t=0;t<test;t++)
+	{
+	    int n;
+	    cin>>n;
+	    int a[n];
+	    multiset<int> u;
+	    multiset<int>::iterator itr;
+	    for(int i=0;i<n;i++)
+	    {
+	        cin>>a[i];
+	    }
+        int q=0;
+	    for(int i=0;i<n;i++)
+	    {
+	        int f=0;
+	        string s=to_string(a[i]);
+	        int r=a[i];
+	      for(int j=0;j<s.length();j++)
+	      {
+	       
+	          int x=r%10;
+	
+	          if(x!=1&&x!=2&&x!=3)
+	          {
+	              f=1;
+	              break;
+	          }
+	          r=r/10;
+	      }
+	      if(f==0)
+	      {
+	      u.insert(a[i]);
+	      q=1;
+	      }
+	    }
+	    if(q==0)
+	    cout<<"-1";
+	    else
+	    {
+	     for(itr=u.begin();itr!=u.end();++itr)
+	     {
+	         cout<<*itr<<" ";
+	     }
+	    }
+	      
+	    cout<<"\n";
+	}
+	return 0;
+}
